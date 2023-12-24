@@ -1,5 +1,5 @@
 {
-  "name": "weather-cli-node-2412",
+  "name": "cli-weather-api",
   "version": "1.0.0",
   "description": "CLI for getting weather",
   "main": "weather.js",
