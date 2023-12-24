@@ -21,6 +21,21 @@ const saveToken = async (token) => {
 
 }
 
+const getForCast = async () => {
+	try {
+		const weather = await getWeather(process.env.CITY ?? 'Saint Petersburg');
+		console.log(weather);
+	} catch (error) {
+		if (error?.response?.status == 404) {
+			printError('неверно указан город');
+		} else if (error?.response?.status == 401) {
+			printError('неверно указан токен');
+		} else {
+			printError(error.message);
+		}
+	}
+}
+
 const initCli = () => {
 
 	const args = getArgs(process.argv)
@@ -37,7 +52,7 @@ const initCli = () => {
 		return saveToken(args.t);
 	}
 
-	getWeather('Saint Petersburg');
+	getForCast();
 
 }
 
